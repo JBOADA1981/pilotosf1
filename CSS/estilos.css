@@ -1,0 +1,195 @@
+/*CSS reset*/
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+}
+@font-face{
+    font-family: higtspeed;
+    src:("../fuentes/Higtspeed.otf");
+}
+body {
+    background-image: url("../imagenes/circuito.png");
+    background-size:cover; /*para que ocupe todo el body*/
+}
+header h1{
+    font-family: higtspeed,sans-serif;
+    color: whitw;
+    text-align: center;
+    font-size: 3em;
+    text-shadow: 1px 1px 1px black, -1px -1px -1px black;
+}
+main{
+    display: flex;
+    gap: 20px;
+    /*Las cajas de los pilotos crecen mucho de alto debido a la columna de la puntuación, pues por defecto aling-items tiene el vaolor estrech. Con esto lo evitamos*/
+    align-items: start;
+}
+
+#puntuacion h2{
+    background-color: white;
+    font-size: 1.5em;
+    padding: .5em;
+}
+
+/* si usamos el nth-chilh habria que tener en cuenta que el h2 es el primer hijo*/
+#puntuacion li:nth-last-of-type(odd) /*  a los impares*/
+{
+    background-color: black;
+    color: white;
+}
+#puntuacion li:nth-last-of-type(even) {
+    /* alos pares*/
+    background-color: white;
+    color: black;
+}
+#puntuacion li{
+    padding: .5em;
+    display: flex;/* para poner el nombre a la izquierda y los puntos a la derecha*/
+    justify-content: space-between;
+}
+/*las primeras 7 puntuaciones en verde*/
+#puntuacion li:nth-of-type(-n+7) .puntos {
+    color: green;
+}
+/*de el 14 en adelante rojo*/
+#puntuacion li:nth-of-type(n+14) .puntos{
+    color: red;
+}
+/*del 8 al 13*/
+#puntuacion li:nth-of-type(n+8):nth-of-type(-n+14) .puntos{
+    color: orange;
+}
+.puntos{
+    font-weight: bold;
+}
+/*pilotos--------------------------------*/
+#pilotos{
+    display:flex;
+    flex-wrap:wrap ;/*para que baje a la siguiente fila si no caben*/
+    gap: 20px;/*espacio entre columnas y filas*/
+    
+}
+.piloto{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px black;
+   /* al tener la imagen justo arriba, no salen los bordes redondeados de las cajas. una posible solucion es*/
+    overflow: hidden;/* ocultar lo que queda fuera de la caja*/
+
+}
+.redbull{
+    background-color: blue;
+    color: white;
+}
+.mclaren{
+    background-color: orange;
+}
+.ferrari{
+    background-color: red;
+}
+.aston{background-color: rgb(68, 68, 68);
+    color: white;
+   
+}
+.alpine{
+    background-color: pink;
+}
+.hass{
+    background-color: black;
+    color: white;
+ 
+}
+.mercedes{
+    background-color: silver;
+}
+.williams{
+    background-color: darkblue;
+    color: white;
+   
+}
+.info{
+    background-color: white;
+    color: black;
+    font-size: .5em;
+    display: flex;/*para poner las etiquetas a la izquierda y los datos a la derecha*/
+    justify-content: space-between;
+    flex-grow: 1;
+}
+.piloto h2{
+    padding-left: 3px;
+    padding-right: 3px;
+    text-align: left;
+    background-repeat: no-repeat;
+    background-position: right;/*la pone ala derecha*/
+    font-size: 0.8em;
+}
+.piloto p{
+    text-align: center;
+}
+.españa{
+    background-image: url("../imagenes/banderas/españa.svg");
+}
+.francia{
+    background-image: url("../imagenes/banderas/francia.svg");
+}
+.monaco{
+    background-image: url("../imagenes/banderas/monaco.svg");
+}
+.reinounido{
+    background-image: url("../imagenes/banderas/reinounido.svg");
+}
+.tailandia{
+    background-image: url("../imagenes/banderas/tailandia.svg");
+}
+.canada{
+    background-image: url("../imagenes/banderas/canada.svg");
+}
+.australia{
+    background-image: url("../imagenes/banderas/australia.svg");
+}
+.italia{
+    background-image: url("../imagenes/banderas/italia.svg");
+}
+.argentina{
+    background-image: url("../imagenes/banderas/argentina.svg");
+}
+.japon{
+    background-image: url("../imagenes/banderas/japon.svg");
+}
+.paisesbajos{
+    background-image: url("../imagenes/banderas/paisesbajos.svg");
+}
+.numero{
+    /*para ponerlo en una posicion con respecto a su contenedor. Su contenedor  a estos efectos n el primer padre con posicionamiento
+    no estatico, el cual es el valor por defecto. Una solucion rapida es ponerle posicionamiento
+    relativo al padre que deseamos que sea el contenedor*/
+    position:absolute;
+    /*arriba a la derecha con 10 pixeles de margen*/
+    top: 10px;
+    right: 10px;
+    border:1px solid rgb(48, 48, 48);
+    border-radius: 5px;
+    font-style: italic;
+    padding: 0.1px;
+    background-color:black;
+    color: white;
+    font-weight: bold;
+}
+.piloto{
+    position: relative;/* Para que el numero considere a este como contenedor*/
+    display: flex;
+    flex-direction: column;
+}
+.etiquetas{
+    font-weight: bold;
+    padding-left: 5px;
+}
+.datos{
+    text-align: right;
+    padding-right: 5px;
+}
+.piloto:hover{
+    transform:rotateX(20deg);
+    transition: transform .2s
+}
